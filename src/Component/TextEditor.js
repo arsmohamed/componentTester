@@ -1,9 +1,14 @@
-import React from 'react';
+import React,  { useState } from 'react';
 import '../Styling/TextEditor.css'
 import Editor from '@monaco-editor/react';
 
 const TextEditor = () => {
-  const code = `function add(a, b) {\n  return a + b;\n}`; // Default code content
+  const [code, setCode] = useState(`function add(a, b) {\n  return a + b;\n}`); // Code content state
+
+  const handleEditorChange = (value, event) => {
+    setCode(value);
+  };
+
 
   return (
     <div className='text_editor_container'>
@@ -13,6 +18,8 @@ const TextEditor = () => {
           height="90vh" // Set height to take 90% of the parent
           language="javascript"
           value={code}
+          theme="vs-dark"
+          onChange={handleEditorChange}
           options={{
             automaticLayout: true, // Adjust the editor layout automatically
             scrollbar: {
