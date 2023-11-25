@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TextEditor from './TextEditor';
+import TextEditor from './Component/TextEditor';
 import './App.css';
 
 const App = () => {

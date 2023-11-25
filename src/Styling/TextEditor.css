@@ -1,0 +1,20 @@
+.text_editor_container {
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 80vh;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text_editor_title {
+    color: white;
+    height: 10%;
+    background-color: brown;
+  }
+  
+  .text_editor { 
+    height: 90%; 
+    overflow-y: auto;
+  }
+  
