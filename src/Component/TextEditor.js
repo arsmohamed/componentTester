@@ -1,31 +1,33 @@
-import React,  { useState } from 'react';
-import '../Styling/TextEditor.css'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Editor from '@monaco-editor/react';
+import { updateCode } from '../Redux/actions/codeActions';
+import '../Styling/TextEditor.css';
 
 const TextEditor = () => {
-  const [code, setCode] = useState(`function add(a, b) {\n  return a + b;\n}`); // Code content state
+  const code = useSelector(state => state.code.code);
+  const dispatch = useDispatch();
 
   const handleEditorChange = (value, event) => {
-    setCode(value);
+    dispatch(updateCode(value)); // Dispatch action to update code in Redux store
   };
 
-
   return (
-    <div className='text_editor_container'>
+    <div className='text_editor_container dark-background'>
       <h2 className='text_editor_title'>Paste Component Code:</h2>
       <div className="text_editor">
         <Editor
-          height="90vh" // Set height to take 90% of the parent
+          height="90vh"
           language="javascript"
-          value={code}
           theme="vs-dark"
-          onChange={handleEditorChange}
+          value={code}
           options={{
-            automaticLayout: true, // Adjust the editor layout automatically
+            automaticLayout: true,
             scrollbar: {
-              verticalScrollbarSize: 6, // Adjust scrollbar size
+              verticalScrollbarSize: 6,
             },
           }}
+          onChange={handleEditorChange}
         />
       </div>
     </div>
